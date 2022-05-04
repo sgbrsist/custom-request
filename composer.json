@@ -1,0 +1,19 @@
+{
+    "name": "sgbrsist/custom-request",
+    "type": "library",
+    "license": "CC-BY",
+    "autoload": {
+        "psr-4": {
+            "Sgbrsist\\CustomRequest\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sgbrsist\\CustomRequest\\CustomRequestServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
