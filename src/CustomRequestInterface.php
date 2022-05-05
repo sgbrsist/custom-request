@@ -10,6 +10,8 @@ interface CustomRequestInterface
     public function addFormData(array $pair);
     public function addJson();
 
+    public function getRoute();
+
     public function get();
     public function post();
     public function put();

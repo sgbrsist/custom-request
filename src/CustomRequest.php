@@ -21,6 +21,11 @@ class CustomRequest implements CustomRequestInterface
         return $this;
     }
 
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
     public function setContentType(string $contentType)
     {
         $this->headers['Content-Type'] = $contentType;
