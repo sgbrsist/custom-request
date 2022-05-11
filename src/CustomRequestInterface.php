@@ -11,6 +11,7 @@ interface CustomRequestInterface
     public function addJson();
 
     public function getRoute();
+    public function getBody();
 
     public function get();
     public function post();

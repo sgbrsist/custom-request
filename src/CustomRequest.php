@@ -60,6 +60,14 @@ class CustomRequest implements CustomRequestInterface
         return $this;
     }
 
+    public function getBody() {
+        if ($this->json)
+            return json_decode($this->json);
+        if ($this->formData)
+            return $this->formData;
+        return null;
+    }
+
     public function get() {
         $resp = false;
         $curl = $this->prepareCurl();
