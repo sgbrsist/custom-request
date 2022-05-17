@@ -5,10 +5,10 @@ namespace Sgbrsist\CustomRequest;
 class CustomRequest implements CustomRequestInterface
 {
     private $route,
-            $response,
-            $formData = [],
-            $json,
-            $headers = [];
+    $formData = [],
+    $json,
+    $headers = [];
+    public $response;
 
     public function __construct()
     {
