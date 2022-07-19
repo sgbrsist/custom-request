@@ -7,7 +7,9 @@ class CustomRequest implements CustomRequestInterface
     private $route,
     $formData = [],
     $json,
-    $headers = [];
+    $headers = [],
+    $sslCertPath,
+    $sslKeyPath;
     public $response;
 
     public function __construct()
@@ -37,6 +39,13 @@ class CustomRequest implements CustomRequestInterface
         foreach ($headers as $key => $value) {
             $this->headers[$key] = $value;
         }
+        return $this;
+    }
+
+    public function setCerts($sslCertPath, $sslKeyPath)
+    {
+        $this->sslCertPath = $sslCertPath;
+        $this->sslKeyPath = $sslKeyPath;
         return $this;
     }
 
@@ -141,6 +150,11 @@ class CustomRequest implements CustomRequestInterface
 
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+
+        if ($this->sslCertPath && $this->sslKeyPath) {
+            curl_setopt($curl, CURLOPT_SSLCERT, $this->sslCertPath);
+            curl_setopt($curl, CURLOPT_SSLKEY, $this->sslKeyPath);
+        }
         if ($this->json)
             curl_setopt($curl, CURLOPT_POSTFIELDS, $this->json);
         else if (count($this->formData) > 0)
